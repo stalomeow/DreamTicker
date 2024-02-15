@@ -16,7 +16,9 @@
 
 ## 示例关卡
 
-在 [Assets/Levels](Assets/Levels) 文件夹里。
+[https://www.bilibili.com/video/BV1kJ4m1W76K](https://www.bilibili.com/video/BV1kJ4m1W76K)
+
+关卡放在 [Assets/Levels](Assets/Levels) 文件夹里。
 
 1. 哈努兄弟越狱记，深层「梦境迷钟」难度 Ⅲ：
 

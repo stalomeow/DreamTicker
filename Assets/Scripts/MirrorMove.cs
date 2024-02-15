@@ -1,11 +1,31 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class MirrorMove : MonoBehaviour
 {
     public MirrorPlane Plane;
     public float MoveSpeed = 0.05f;
+    [Range(0, 1)] public float HighlightMix = 0.2f;
+
     private Vector2? _mousePos = null;
+    private MeshRenderer _renderer;
+    private readonly int _highlightMixPropId = Shader.PropertyToID("_HighlightMix");
+
+    private void Start()
+    {
+        _renderer = GetComponent<MeshRenderer>();
+    }
+
+    private void OnMouseEnter()
+    {
+        _renderer.material.SetFloat(_highlightMixPropId, HighlightMix);
+    }
+
+    private void OnMouseExit()
+    {
+        _renderer.material.SetFloat(_highlightMixPropId, 0);
+    }
 
     private void OnMouseDown()
     {

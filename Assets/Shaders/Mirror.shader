@@ -5,6 +5,9 @@ Shader "Custom/Mirror"
         [MainColor] _BaseColor("Base Color", Color) = (1, 1, 1, 1)
         [MainTexture] _BaseMap("Base Map", 2D) = "white" {}
 
+        _HighlightColor("Highlight Color", Color) = (1, 1, 1, 1)
+        _HighlightMix("Highlight Mix", Range(0, 1)) = 0
+
         [Space]
 
         _StencilRef("Stencil Ref", Float) = 0
@@ -68,6 +71,8 @@ Shader "Custom/Mirror"
             CBUFFER_START(UnityPerMaterial)
                 half4 _BaseColor;
                 float4 _BaseMap_ST;
+                float4 _HighlightColor;
+                float _HighlightMix;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -124,6 +129,8 @@ Shader "Custom/Mirror"
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseColor;
                 float4 _BaseMap_ST;
+                float4 _HighlightColor;
+                float _HighlightMix;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -137,7 +144,7 @@ Shader "Custom/Mirror"
             float4 frag(Varyings IN) : SV_Target
             {
                 float4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
-                return color * _BaseColor;
+                return color * lerp(_BaseColor, _HighlightColor, _HighlightMix);
             }
             ENDHLSL
         }

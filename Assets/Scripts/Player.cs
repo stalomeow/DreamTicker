@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public Vector3 PositionOffset = new Vector3(0, 1.5f, 0);
     public float MoveTimePerBlock = 0.1f;
+    public Trail PathDisplayTrail;
     public Block CurrentBlock;
     public GameObject GoalHintPrefab;
     public Block[] GoalBlocks;
@@ -70,6 +71,8 @@ public class Player : MonoBehaviour
     {
         _isMoving = true;
         BlockManager.Instance.DisableInteract();
+
+        yield return StartCoroutine(PathDisplayTrail.Move(next, CurrentBlock, goal));
 
         while (CurrentBlock != goal)
         {

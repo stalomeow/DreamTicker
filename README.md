@@ -8,11 +8,7 @@
 
 ![explain](Recordings/explain.png)
 
-大体思路如上图。
-
-镜子在斜坐标系里就是个平行四边形，把四个边的直线方程（斜率已知）求出来，就能判断方块在不在镜子里。镜子渲染直接用的模板测试。
-
-具体的解释以后有空再写。
+详细解释：[https://note.stalomeow.com/blog/posts/unity-hsr-dream-ticker-2024-02-18/](https://note.stalomeow.com/blog/posts/unity-hsr-dream-ticker-2024-02-18/)。
 
 ## 示例关卡
 
